@@ -94,7 +94,7 @@ const SurveyContainer = () => {
         if (!surveyData.role) return false;
         const questions = getQuestionsForRole(surveyData.role);
         const requiredQuestions = questions.filter((q) => q.required);
-        
+
         for (const question of requiredQuestions) {
           const answer = surveyData.answers[question.id];
           if (!answer || (Array.isArray(answer) && answer.length === 0)) {
@@ -134,10 +134,10 @@ const SurveyContainer = () => {
     if (!surveyData.role) return;
 
     setIsSubmitting(true);
-    
+
     try {
       const { supabase } = await import('@/integrations/supabase/client');
-      
+
       const { error } = await supabase.from('survey_responses').insert({
         email: surveyData.email.trim(),
         phone: surveyData.phone.trim() || null,
@@ -146,12 +146,12 @@ const SurveyContainer = () => {
       });
 
       if (error) throw error;
-      
+
       toast({
         title: 'Survey Submitted Successfully!',
         description: 'Thank you for your contribution to this research.',
       });
-      
+
       setCurrentStep('complete');
     } catch (error: any) {
       console.error('Submission error:', error);
@@ -221,7 +221,7 @@ const SurveyContainer = () => {
   return (
     <div className="min-h-screen bg-background">
       <SurveyHeader />
-      
+
       {currentStep !== 'complete' && (
         <ProgressBar
           currentStep={currentStepIndex}
@@ -253,9 +253,7 @@ const SurveyContainer = () => {
         <p className="text-xs text-muted-foreground">
           © 2025 Academic Research Project. All rights reserved.
         </p>
-        <p className="sinhala-text text-[10px] mt-1">
-          © 2025 අධ්‍යයන පර්යේෂණ ව්‍යාපෘතිය. සියලුම හිමිකම් ඇවිරිණි.
-        </p>
+
       </footer>
     </div>
   );

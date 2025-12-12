@@ -24,7 +24,7 @@ export const tutorQuestions: Question[] = [
       { value: 'grade6-11', labelEn: 'Grade 6-11 (O/L)', labelSi: 'ශ්‍රේණිය 6-11 (සා/පෙළ)' },
       { value: 'al-science', labelEn: 'A/L Science/Maths', labelSi: 'උ/පෙළ විද්‍යා/ගණිතය' },
       { value: 'al-commerce', labelEn: 'A/L Commerce/Arts/Tech', labelSi: 'උ/පෙළ වාණිජ/කලා/තාක්ෂණ' },
-      { value: 'professional', labelEn: 'Professional/Language Courses', labelSi: 'වෘත්තීය/භාෂා පාඨමාලා' },
+      { value: 'professional', labelEn: 'Professional/Language Courses/Other', labelSi: 'වෘත්තීය/භාෂා පාඨමාලා/වෙනත්' },
     ],
   },
   {
@@ -97,9 +97,9 @@ export const tutorQuestions: Question[] = [
     questionSi: 'සම්පූර්ණ පද්ධතියක් සඳහා එක් සිසුවෙකු වෙනුවෙන් මසකට කොපමණ මුදලක් ගෙවිය හැකිද?',
     required: true,
     options: [
-      { value: '20-50', labelEn: 'Rs. 20 - 50', labelSi: 'රු. 20 - 50' },
-      { value: '50-100', labelEn: 'Rs. 50 - 100', labelSi: 'රු. 50 - 100' },
-      { value: '100+', labelEn: 'Rs. 100+', labelSi: 'රු. 100+' },
+      { value: '20-50', labelEn: 'Rs. 5 - 10', labelSi: 'රු. 5 - 10' },
+      { value: '50-100', labelEn: 'Rs. 10 - 20', labelSi: 'රු. 10 - 20' },
+      { value: '100+', labelEn: 'Rs. 20+', labelSi: 'රු. 20+' },
       { value: 'fixed', labelEn: 'I prefer a fixed monthly fee', labelSi: 'සිසුන් ගණන නොව, මසකට ස්ථාවර මුදලක් ගෙවීමට කැමතිය' },
     ],
   },
@@ -110,6 +110,13 @@ export const tutorQuestions: Question[] = [
     questionSi: 'පන්ති පැවැත්වීමේදී ඔබට වැඩිපුරම මානසික වදයක් දෙන ගැටලුව කෙටියෙන් ලියන්න.',
     required: false,
   },
+  {
+  id: 'tutor_q10',
+  type: 'textarea',
+  questionEn: 'To make your work easier, what specific solution or platform do you expect?',
+  questionSi: 'ඔබේ වැඩකටයුතු වඩාත් පහසු කරගැනීමට අවශ්‍ය නම්, ඔබ බලාපොරොත්තු වන්නේ මොන වගේ Platform එකක්ද?',
+  required: false,
+}
 ];
 
 export const instituteQuestions: Question[] = [
@@ -207,6 +214,13 @@ export const instituteQuestions: Question[] = [
     questionSi: 'ඔබේ ආයතනයේ එක් කාර්යයක් ස්වයංක්‍රීය (Automate) කළ හැකිනම්, එය කුමක්ද?',
     required: false,
   },
+  {
+  id: 'institute_q9',
+  type: 'textarea',
+  questionEn: 'What is the main feature you would expect from a new system to help your institute run smoothly?',
+  questionSi: 'ඔබේ ආයතනයේ කටයුතු පහසු කරගැනීම සඳහා නව පද්ධතියකින් ඔබ අනිවාර්යයෙන්ම බලාපොරොත්තු වන දේ කුමක්ද?',
+  required: false,
+}
 ];
 
 export const studentQuestions: Question[] = [
@@ -301,6 +315,13 @@ export const studentQuestions: Question[] = [
     questionSi: 'දැනට ටියුෂන් පන්ති වලට සහභාගී වීමේදී ඔබට ඇති ලොකුම කරදරය කුමක්ද?',
     required: false,
   },
+  {
+  id: 'student_q9',
+  type: 'textarea',
+  questionEn: 'If you could create the perfect tuition app, what is the one thing it must have?',
+  questionSi: 'ඔබට කැමති ලෙස පන්ති ඇප් එකක් සාදාගැනීමට ලැබුණොත්, එහි අනිවාර්යයෙන්ම තිබිය යුතු පහසුකම කුමක්ද?',
+  required: false,
+}
 ];
 
 export const parentQuestions: Question[] = [
