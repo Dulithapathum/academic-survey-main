@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { RefreshCw, Download } from 'lucide-react';
 import { SurveyResponse } from '@/hooks/useResponses';
 import { useToast } from '@/hooks/use-toast';
+import { getQuestionsForRole } from '@/data/surveyQuestions';
 
 interface FilterBarProps {
   roleFilter: string;
@@ -25,20 +26,47 @@ const FilterBar = ({ roleFilter, onRoleFilterChange, responses, onRefresh, isLoa
       return;
     }
 
-    // Flatten answers for CSV
-    const csvData = responses.map((r) => ({
-      id: r.id,
-      email: r.email,
-      phone: r.phone || '',
-      role: r.role,
-      created_at: new Date(r.created_at).toLocaleString(),
-      ...Object.fromEntries(
-        Object.entries(r.answers as Record<string, any>).map(([key, value]) => [
-          key,
-          Array.isArray(value) ? value.join('; ') : value,
-        ])
-      ),
-    }));
+    // Helper to get readable question text and map answers to labels
+    const getQuestionLabel = (questionId: string, role: string) => {
+      const roleQuestions = getQuestionsForRole(role);
+      const q = roleQuestions.find((qq) => qq.id === questionId);
+      return q ? q.questionEn : questionId;
+    };
+
+    const getAnswerLabel = (questionId: string, value: any, role: string) => {
+      const roleQuestions = getQuestionsForRole(role);
+      const q = roleQuestions.find((qq) => qq.id === questionId);
+
+      if (!q || !q.options) {
+        return Array.isArray(value) ? value.join('; ') : String(value);
+      }
+
+      const mapOption = (val: any) => {
+        const opt = q.options?.find((o: any) => o.value === val);
+        return opt ? opt.labelEn ?? String(val) : String(val);
+      };
+
+      return Array.isArray(value) ? value.map(mapOption).join('; ') : mapOption(value);
+    };
+
+    // Flatten answers for CSV with readable labels
+    const csvData = responses.map((r) => {
+      const row: any = {
+        id: r.id,
+        email: r.email,
+        phone: r.phone || '',
+        role: r.role,
+        created_at: new Date(r.created_at).toLocaleString(),
+      };
+
+      Object.entries(r.answers as Record<string, any>).forEach(([questionId, value]) => {
+        const questionLabel = getQuestionLabel(questionId, r.role);
+        const answerLabel = getAnswerLabel(questionId, value, r.role);
+        row[questionLabel] = answerLabel;
+      });
+
+      return row;
+    });
 
     // Get all possible headers
     const allKeys = new Set<string>();
