@@ -60,7 +60,7 @@ export const tutorQuestions: Question[] = [
     questionSi: 'සතියකට කොපමණ කාලයක් ඔබ රිසිට්පත් පරීක්ෂා කිරීමට වැය කරනවාද?',
     required: true,
     options: [
-      { value: 'less-1hr', labelEn: 'Less than 1 hour', labelSi: 'පැයක්ට අඩුවෙන්' },
+      { value: 'less-1hr', labelEn: 'Less than 1 hour', labelSi: 'පැයකට අඩුවෙන්' },
       { value: '1-5hrs', labelEn: '1 - 5 hours', labelSi: 'පැය 1 ත් 5 ත් අතර' },
       { value: 'more-5hrs', labelEn: 'More than 5 hours', labelSi: 'පැය 5 ට වඩා වැඩි' },
       { value: 'hired', labelEn: 'I hire someone to do it', labelSi: 'ඒ සඳහා අයෙක් පත් කර ඇත' },
