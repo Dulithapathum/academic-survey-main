@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 220 60% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 15% 93%;
+    --secondary-foreground: 215 25% 25%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 12% 50%;
+
+    --accent: 220 50% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 220 60% 25%;
+
+    --radius: 0.5rem;
+
+    /* Custom survey tokens */
+    --survey-header-bg: 220 55% 18%;
+    --survey-header-foreground: 0 0% 100%;
+    --survey-progress-bg: 210 15% 90%;
+    --survey-progress-fill: 220 60% 35%;
+    --survey-step-inactive: 215 12% 65%;
+    --survey-step-active: 220 60% 25%;
+    --survey-sinhala: 215 12% 45%;
+    --survey-option-border: 214 20% 85%;
+    --survey-option-hover: 220 50% 97%;
+    --survey-option-selected: 220 55% 95%;
+    --survey-option-selected-border: 220 60% 45%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 210 50% 60%;
+    --primary-foreground: 215 25% 10%;
+
+    --secondary: 215 20% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 210 45% 50%;
+    --accent-foreground: 215 25% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 210 50% 60%;
+
+    --survey-header-bg: 220 55% 12%;
+    --survey-header-foreground: 210 20% 98%;
+    --survey-progress-bg: 215 20% 20%;
+    --survey-progress-fill: 210 50% 50%;
+    --survey-step-inactive: 215 15% 50%;
+    --survey-step-active: 210 50% 60%;
+    --survey-sinhala: 215 15% 60%;
+    --survey-option-border: 215 20% 25%;
+    --survey-option-hover: 215 25% 15%;
+    --survey-option-selected: 220 40% 18%;
+    --survey-option-selected-border: 210 50% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .survey-header {
+    @apply bg-survey-header text-survey-header-foreground;
+  }
+
+  .survey-card {
+    @apply bg-card rounded-lg border border-border shadow-sm;
+  }
+
+  .survey-option {
+    @apply border border-survey-option-border rounded-lg p-4 cursor-pointer transition-all duration-200;
+  }
+
+  .survey-option:hover {
+    @apply bg-survey-option-hover border-muted-foreground/30;
+  }
+
+  .survey-option.selected {
+    @apply bg-survey-option-selected border-survey-option-selected-border;
+  }
+
+  .sinhala-text {
+    @apply text-sm text-survey-sinhala mt-1;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-survey-progress-bg rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-survey-progress-fill transition-all duration-500 ease-out;
+  }
+}
