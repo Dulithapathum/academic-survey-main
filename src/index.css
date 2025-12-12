@@ -1,8 +1,10 @@
+/* Import must come first */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Then Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
@@ -88,7 +90,7 @@
     --input: 215 20% 20%;
     --ring: 210 50% 60%;
 
-    --survey-header-bg: 220 55% 12%;
+      --survey-header-bg: 220 55% 12%;
     --survey-header-foreground: 210 20% 98%;
     --survey-progress-bg: 215 20% 20%;
     --survey-progress-fill: 210 50% 50%;
@@ -159,3 +161,4 @@
     @apply h-full bg-survey-progress-fill transition-all duration-500 ease-out;
   }
 }
+
